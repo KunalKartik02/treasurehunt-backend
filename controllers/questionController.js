@@ -13,7 +13,7 @@ exports.getAllQuestions = async function (req, res) {
 
 exports.getQuestion = async function (req, res) {
   await questions
-    .find({ _id: req.params.id })
+    .findById(req.params.id)
     .select({ "level": 1, "answer": 1 })
     .exec((error, result) => {
       if (error)
