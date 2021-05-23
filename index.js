@@ -12,8 +12,8 @@ const app = express();
 app.use(cors());
 app.use(express.json());
 
-app.use("/*", rootRouter);
 app.use("/health", healthRouter);
+app.use("/*", rootRouter);
 
 dotenv.config({ path: "./config.env" });
 
