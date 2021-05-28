@@ -21,7 +21,7 @@ app.use("/*", rootRouter);
 
 dotenv.config({ path: "./config.env" });
 
-const port = process.env.PORT || 4040;
+const port = process.env.PORT || 3000;
 
 app.listen(port, () => {
   console.log(`app running on http://localhost:${port}`);
