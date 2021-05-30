@@ -14,8 +14,8 @@ exports.getAllUsers = async function (req, res) {
 
 exports.getUser = async function (req, res) {
   await users
-    .find(req.params.uid)
-    .select({ "uCode": 1 })
+    .find({ uCode: req.params.uid })
+    .select({ uCode: 1 })
     .exec((error, result) => {
       if (error)
         return res.json({ status: 500, message: "Error", result: error }).end();
