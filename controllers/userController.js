@@ -13,6 +13,7 @@ exports.getAllUsers = async function (req, res) {
 };
 
 exports.getUser = async function (req, res) {
+  console.log(req.params.uid);
   await users
     .find({ uId: req.params.uid })
     .select({ "uCode": 1 })
