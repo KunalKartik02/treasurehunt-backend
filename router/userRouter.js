@@ -7,4 +7,6 @@ router
   .get(userController.getAllUsers)
   .post(userController.createUsers);
 
+router.route("/:uid").get(userController.getUser);
+
 module.exports = router;
