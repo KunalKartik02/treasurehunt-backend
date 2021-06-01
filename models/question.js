@@ -1,6 +1,10 @@
 const mongoose = require("mongoose");
 
 const questionSchema = new mongoose.Schema({
+  isDone: {
+    type: Boolean,
+    default: false,
+  },
   level: Number,
   question: String,
   image: String,
