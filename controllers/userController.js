@@ -15,7 +15,7 @@ exports.getAllUsers = async function (req, res) {
 exports.getUser = async function (req, res) {
   await users
     .find({ uId: req.params.uid })
-    .select({ "uCode": 1, "fullName": 1 })
+    .select({"uId":1, "uCode": 1, "fullName": 1 })
     .exec((error, result) => {
       if (error)
         return res.json({ status: 500, message: "Error", result: error }).end();
