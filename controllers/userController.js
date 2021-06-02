@@ -19,7 +19,7 @@ exports.getUser = async function (req, res) {
     .exec((error, result) => {
       if (error)
         return res.json({ status: 500, message: "Error", result: error }).end();
-      if (result.length == 0)
+      if (result)
         return res
           .json({ status: 404, message: "No data found", result: null })
           .end();
