@@ -14,15 +14,16 @@ exports.getAllUsers = async function (req, res) {
 
 exports.getUser = async function (req, res) {
   await users
-    .find({ uId: req.params.uid })
-    .select({"uId":1, "uCode": 1, "fullName": 1 })
+    .findOne({ uId: req.params.uid })
+    .select({ uId: 1, uCode: 1, fullName: 1, highestLevelPlayed: 1, email: 1 })
     .exec((error, result) => {
       if (error)
         return res.json({ status: 500, message: "Error", result: error }).end();
-      if (!result)
+      if (result.length == 0)
         return res
           .json({ status: 404, message: "No data found", result: null })
           .end();
+
       return res.json({ status: 200, message: "Ok", result: result }).end();
     });
 };
