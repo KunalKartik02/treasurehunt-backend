@@ -9,6 +9,7 @@ const rootRouter = require("./router/rootRouter");
 const healthRouter = require("./router/healthRouter");
 const questionRouter = require("./router/questionRouter");
 const userRouter = require("./router/userRouter");
+const answerRouter = require("./router/asnwerRouter");
 
 const app = express();
 app.use(cors());
@@ -16,6 +17,7 @@ app.use(express.json());
 
 app.use("/health", healthRouter);
 app.use("/questions", questionRouter);
+app.use("/answer", answerRouter);
 app.use("/users", userRouter);
 app.use("/*", rootRouter);
 

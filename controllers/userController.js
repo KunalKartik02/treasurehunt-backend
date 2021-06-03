@@ -4,37 +4,89 @@ const users = require("../models/user");
 exports.getAllUsers = async function (req, res) {
   try {
     const allUsers = await users.find();
-    res
-      .status(200)
-      .json({ status: res.statusCode, message: "OK", data: allUsers });
+    res.status(200).json({
+      status: res.statusCode,
+      message: "OK",
+      data: allUsers,
+    });
   } catch (error) {
-    res.status(404).json({ status: "error", message: error });
+    res.status(404).json({
+      status: "error",
+      message: error,
+    });
   }
 };
 
 exports.getUser = async function (req, res) {
   await users
     .findOne({ uId: req.params.uid })
-    .select({ uId: 1, uCode: 1, fullName: 1, highestLevelPlayed: 1, email: 1 })
+    .select({
+      uId: 1,
+      uCode: 1,
+      fullName: 1,
+      highestLevelPlayed: 1,
+      email: 1,
+    })
     .exec((error, result) => {
       if (error)
-        return res.json({ status: 500, message: "Error", result: error }).end();
-      if (result==null)
         return res
-          .json({ status: 404, message: "No data found", result: null })
+          .json({
+            status: 500,
+            message: "Error",
+            result: error,
+          })
+          .end();
+      if (result == null)
+        return res
+          .json({
+            status: 404,
+            message: "No data found",
+            result: null,
+          })
           .end();
 
-      return res.json({ status: 200, message: "Ok", result: result }).end();
+      return res
+        .json({
+          status: 200,
+          message: "Ok",
+          result: result,
+        })
+        .end();
     });
 };
 
 exports.createUsers = async function (req, res) {
   try {
-    const newUser = await users.create(req.body);
-    res
-      .status(200)
-      .json({ status: res.statusCode, message: "OK", data: newUser });
+    users.findOne({ uCode: req.body.uId }).exec(async (error, result) => {
+      if (error)
+        return res
+          .json({
+            status: 500,
+            message: "Error",
+            result: error,
+          })
+          .end();
+      if (result == null) {
+        const newUser = await users.create(req.body);
+        res.status(200).json({
+          status: res.statusCode,
+          message: "OK",
+          data: newUser,
+        });
+      } else {
+        return res
+          .json({
+            status: 400,
+            message: "User already registered",
+            result: null,
+          })
+          .end();
+      }
+    });
   } catch (error) {
-    res.status(404).json({ status: "error", message: error });
+    res.status(404).json({
+      status: "error",
+      message: error,
+    });
   }
 };
