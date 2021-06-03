@@ -15,31 +15,29 @@ exports.getAllQuestions = async function (req, res) {
 
 exports.getQuestion = async function (req, res) {
   await users
-    .findOne({ uId: req.params.uid })
+    .findOne({ uId: req.params.uId })
     .select({ uId: 1, highestLevelPlayed: 1 })
-    .exec((error, result) => {
+    .exec(async (error, result) => {
       if (error)
         return res.json({ status: 500, message: "Error", result: error }).end();
       if (result == null)
         return res
           .json({ status: 404, message: "No data found", result: null })
           .end();
-
-      return res.json({ status: 200, message: "Ok", result: result }).end();
+      else {
+        await questions
+          .findOne({ level: result.highestLevelPlayed + 1 })
+          .exec(async (error, result) => {
+            if (error)
+              return res
+                .json({ status: 500, message: "Error", result: error })
+                .end();
+            return res
+              .json({ status: 200, message: "Ok", result: result })
+              .end();
+          });
+      }
     });
-
-  // await questions
-  //   .findOne({ highestLevelPlayed: result.highestLevelPlayed + 1 })
-  //   .select({ level: 1, question: 1, image: 1, answer: 1 })
-  //   .exec((error, result) => {
-  //     if (error)
-  //       return res.json({ status: 500, message: "Error", result: error }).end();
-  //     if (!result)
-  //       return res
-  //         .json({ status: 404, message: "No data found", result: null })
-  //         .end();
-  //     return res.json({ status: 200, message: "Ok", result: result }).end();
-  //   });
 };
 
 exports.createQuestions = async function (req, res) {

@@ -7,6 +7,6 @@ router
   .get(questionController.getAllQuestions)
   .post(questionController.createQuestions);
 
-router.route("/:id").get(questionController.getQuestion);
+router.route("/:uId").get(questionController.getQuestion);
 
 module.exports = router;
