@@ -54,8 +54,10 @@ exports.checkAnswer = async (req, res) => {
                 res.status(200).json({
                   status: res.statusCode,
                   message: "OK",
+
                   result: {
                     message: `User Completed level ${result.level}`,
+                    isAnswereCorreect: true,
                   },
                 });
             }
