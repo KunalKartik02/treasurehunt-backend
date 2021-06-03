@@ -8,5 +8,6 @@ router
   .post(questionController.createQuestions);
 
 router.route("/:uId").get(questionController.getQuestion);
+router.route("/qs/:level").get(questionController.getQuestionBasedOnLevel);
 
 module.exports = router;

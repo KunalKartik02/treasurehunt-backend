@@ -40,6 +40,21 @@ exports.getQuestion = async function (req, res) {
     });
 };
 
+exports.getQuestionBasedOnLevel = (req, res) => {
+  questions
+    .findOne({ level: req.params.level })
+    .select("-answer -__v")
+    .exec((error, result) => {
+      if (error)
+        return res.json({ status: 500, message: "Error", result: error }).end();
+      if (result == null)
+        return res
+          .json({ status: 404, message: "No data found", result: null })
+          .end();
+      return res.json({ status: 200, message: "Ok", result: result }).end();
+    });
+};
+
 exports.createQuestions = async function (req, res) {
   try {
     const newQuestion = await questions.create(req.body);
