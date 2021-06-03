@@ -1,3 +1,5 @@
+const mongoose = require("mongoose");
+const users = require("../models/user");
 const questions = require("../models/question");
 
 exports.getAllQuestions = async function (req, res) {
@@ -12,18 +14,32 @@ exports.getAllQuestions = async function (req, res) {
 };
 
 exports.getQuestion = async function (req, res) {
-  await questions
-    .findById(req.params.id)
-    .select({ "level": 1, "answer": 1 })
+  await users
+    .findOne({ uId: req.params.uid })
+    .select({ uId: 1, highestLevelPlayed: 1 })
     .exec((error, result) => {
       if (error)
         return res.json({ status: 500, message: "Error", result: error }).end();
-      if (!result)
+      if (result == null)
         return res
           .json({ status: 404, message: "No data found", result: null })
           .end();
+
       return res.json({ status: 200, message: "Ok", result: result }).end();
     });
+
+  // await questions
+  //   .findOne({ highestLevelPlayed: result.highestLevelPlayed + 1 })
+  //   .select({ level: 1, question: 1, image: 1, answer: 1 })
+  //   .exec((error, result) => {
+  //     if (error)
+  //       return res.json({ status: 500, message: "Error", result: error }).end();
+  //     if (!result)
+  //       return res
+  //         .json({ status: 404, message: "No data found", result: null })
+  //         .end();
+  //     return res.json({ status: 200, message: "Ok", result: result }).end();
+  //   });
 };
 
 exports.createQuestions = async function (req, res) {
