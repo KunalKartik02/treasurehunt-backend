@@ -27,6 +27,7 @@ exports.getQuestion = async function (req, res) {
       else {
         await questions
           .findOne({ level: result.highestLevelPlayed + 1 })
+          .select({ level: 1, question: 1, image: 1 })
           .exec(async (error, result) => {
             if (error)
               return res
