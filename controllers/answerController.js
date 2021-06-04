@@ -56,7 +56,7 @@ exports.checkAnswer = async (req, res) => {
                   message: "OK",
                   result: {
                     message: `User Completed level ${result.level}`,
-                    isAnswereCorreect: true,
+                    isAnswerCorrect: true,
                   },
                 });
             }
@@ -67,7 +67,7 @@ exports.checkAnswer = async (req, res) => {
             message: "The Answer given is Wrong",
             result: {
               message: "Please check your answer",
-              isAnswereCorreect: false,
+              isAnswerCorrect: false,
             },
           });
         }
