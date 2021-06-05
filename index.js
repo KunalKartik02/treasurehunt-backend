@@ -11,6 +11,7 @@ const healthRouter = require("./router/healthRouter");
 const questionRouter = require("./router/questionRouter");
 const userRouter = require("./router/userRouter");
 const answerRouter = require("./router/asnwerRouter");
+const leaderBoardRouter = require("./router/leaderBoard");
 
 const app = express();
 app.use(cors());
@@ -20,6 +21,7 @@ app.use("/health", healthRouter);
 app.use("/questions", checkIfAuthenticated, questionRouter);
 app.use("/answer", checkIfAuthenticated, answerRouter);
 app.use("/users", checkIfAuthenticated, userRouter);
+app.use("/leaderboard", leaderBoardRouter);
 app.use("/*", rootRouter);
 
 dotenv.config({ path: "./config.env" });
