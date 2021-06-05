@@ -4,8 +4,7 @@ const serviceAccount = require("./serviceAccount.json");
 
 admin.initializeApp({
   credential: admin.credential.cert(serviceAccount),
-  // databaseURL: "https://admin-dash-vue-pro-default-rtdb.firebaseio.com",
-  // databaseURL: "https://projectprolaw-default-rtdb.firebaseio.com",
+  database: "https://treasure-hunt-comp-default-rtdb.firebaseio.com/",
 });
 
 const getAuthToken = (req, res, next) => {
