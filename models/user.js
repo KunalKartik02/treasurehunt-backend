@@ -27,6 +27,7 @@ const userSchema = new mongoose.Schema({
   answers: [
     {
       level: Number,
+      answer: String,
       time: Date,
     },
   ],

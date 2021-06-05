@@ -8,6 +8,8 @@ exports.checkAnswer = async (req, res) => {
   const uId = req.params.uId;
   const qsId = req.params.qsId;
   const answer = req.body.answer;
+  const date = new Date();
+  console.log(date);
 
   if (uId == null || qsId == null) {
     return res
@@ -38,8 +40,16 @@ exports.checkAnswer = async (req, res) => {
             { uId: uId },
             {
               highestLevelPlayed: result.level,
+              $push: {
+                answers: {
+                  level: result.level,
+                  answer: result.answer,
+                  time: date,
+                },
+              },
             },
             { useFindAndModify: false },
+
             (err, updateResult) => {
               console.log(result);
               if (err)
