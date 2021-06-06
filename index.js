@@ -18,9 +18,9 @@ app.use(cors());
 app.use(express.json());
 
 app.use("/health", healthRouter);
-app.use("/questions", questionRouter);
-app.use("/answer", answerRouter);
-app.use("/users", userRouter);
+app.use("/questions", checkIfAuthenticated, questionRouter);
+app.use("/answer", checkIfAuthenticated, answerRouter);
+app.use("/users", checkIfAuthenticated, userRouter);
 app.use("/leaderboard", leaderBoardRouter);
 app.use("/*", rootRouter);
 
