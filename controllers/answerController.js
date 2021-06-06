@@ -50,7 +50,6 @@ exports.checkAnswer = async (req, res) => {
             { useFindAndModify: false },
 
             (err, updateResult) => {
-              console.log(result);
               if (err)
                 return res
                   .json({
