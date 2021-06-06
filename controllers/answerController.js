@@ -9,7 +9,6 @@ exports.checkAnswer = async (req, res) => {
   const qsId = req.params.qsId;
   const answer = req.body.answer;
   const date = new Date();
-  console.log(date);
 
   if (uId == null || qsId == null) {
     return res
@@ -33,7 +32,7 @@ exports.checkAnswer = async (req, res) => {
         if (
           validator.equals(
             validator.trim(result.answer).toLocaleLowerCase(),
-            validator.trim(answer).toLocaleLowerCase(),
+            validator.trim(answer).toLocaleLowerCase()
           )
         ) {
           users.findOneAndUpdate(
