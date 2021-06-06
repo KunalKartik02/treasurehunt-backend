@@ -57,7 +57,7 @@ exports.getUser = async function (req, res) {
 
 exports.createUsers = async function (req, res) {
   try {
-    users.findOne({ uCode: req.body.uId }).exec(async (error, result) => {
+    users.findOne({ uId: req.body.uId }).exec(async (error, result) => {
       if (error)
         return res
           .json({

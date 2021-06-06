@@ -32,8 +32,8 @@ exports.checkAnswer = async (req, res) => {
       else {
         if (
           validator.equals(
-            validator.trim(result.answer),
-            validator.trim(answer)
+            validator.trim(result.answer).toLocaleLowerCase(),
+            validator.trim(answer).toLocaleLowerCase(),
           )
         ) {
           users.findOneAndUpdate(
