@@ -33,8 +33,26 @@ exports.getQuestion = async function (req, res) {
               return res
                 .json({ status: 500, message: "Error", result: error })
                 .end();
+            if (result == null)
+              return res
+                .json({
+                  status: 404,
+                  message: "Question not found",
+                  result: {
+                    isQuestionFount: false,
+                  },
+                })
+                .end();
             return res
-              .json({ status: 200, message: "Ok", result: result })
+              .json({
+                status: 200,
+                message: "Ok",
+                result: {
+                  result: result,
+                  isQuestionFount: true,
+                },
+              })
+
               .end();
           });
       }
