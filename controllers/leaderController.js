@@ -41,7 +41,7 @@ exports.getLeaderBoard = async (req, res) => {
             res
               .status(200)
               .json({
-                status: res.status,
+                status: 200,
                 message: "Ok",
                 result: formatedUsers,
               })
