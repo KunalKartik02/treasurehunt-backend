@@ -19,11 +19,6 @@ const userSchema = new mongoose.Schema({
     unique: true,
     required: true,
   },
-  uCode: {
-    type: String,
-    // unique: true,
-    // required: true,
-  },
   answers: [
     {
       level: Number,
