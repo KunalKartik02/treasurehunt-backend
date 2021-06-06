@@ -22,7 +22,6 @@ exports.getUser = async function (req, res) {
     .findOne({ uId: req.params.uid })
     .select({
       uId: 1,
-      uCode: 1,
       fullName: 1,
       highestLevelPlayed: 1,
       email: 1,
