@@ -17,8 +17,8 @@ const app = express();
 
 var allowedOrigins = [
   "http://localhost:1234",
-  "https://treasure-hunt-comp.web.app/",
-  "https://quaruntime.web.app/",
+  "https://treasure-hunt-comp.web.app",
+  "https://quaruntime.web.app",
   "http://localhost:8080",
 ];
 
