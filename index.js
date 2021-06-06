@@ -15,22 +15,22 @@ const leaderBoardRouter = require("./router/leaderBoard");
 
 const app = express();
 
-const whiteList = [
-  "https://treasure-hunt-comp.web.app/",
-  "https://quaruntime.web.app/",
-];
+// const whiteList = [
+//   "https://treasure-hunt-comp.web.app/",
+//   "https://quaruntime.web.app/",
+// ];
 
-const corsOption = {
-  origin: function (origin, callback) {
-    if (whiteList.indexOf(origin) !== -1) {
-      callback(null, true);
-    } else {
-      callback(new Error("Not allowed by CORS"));
-    }
-  },
-};
+// const corsOption = {
+//   origin: function (origin, callback) {
+//     if (whiteList.indexOf(origin) !== -1) {
+//       callback(null, true);
+//     } else {
+//       callback(new Error("Not allowed by CORS"));
+//     }
+//   },
+// };
 
-app.use(cors(corsOption));
+app.use(cors());
 app.use(express.json());
 
 app.use("/health", healthRouter);
