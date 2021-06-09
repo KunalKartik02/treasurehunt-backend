@@ -19,6 +19,9 @@ const userSchema = new mongoose.Schema({
     unique: true,
     required: true,
   },
+  lastAnsweredTime: {
+    type: Date,
+  },
   answers: [
     {
       level: Number,

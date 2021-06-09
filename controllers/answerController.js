@@ -39,6 +39,7 @@ exports.checkAnswer = async (req, res) => {
             { uId: uId },
             {
               highestLevelPlayed: result.level,
+              lastAnsweredTime: date,
               $push: {
                 answers: {
                   level: result.level,
