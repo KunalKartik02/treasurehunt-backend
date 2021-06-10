@@ -21,6 +21,7 @@ var allowedOrigins = [
   "https://treasure-hunt-comp.firebaseapp.com",
   "https://quaruntime.web.app",
   "http://localhost:8080",
+  "https://treasurehunt-dashboard.web.app",
 ];
 
 app.use(
