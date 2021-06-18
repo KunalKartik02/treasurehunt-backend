@@ -10,9 +10,9 @@
    - Then run `npm install`. (which will install required packages).
 4. Create a `config.env` file on the root of the directory.
    - Insert mongoDb database credentials in the `config.env` file.
-     > you will get the mongoDb credentials from ![MongoDb Atlas](https://account.mongodb.com/account/login)
+     > you will get the mongoDb credentials from [MongoDb Atlas](https://account.mongodb.com/account/login)
    - Also insert other required credentials to the `config.env` file.
-5. Add the required credentials to `ServiceAccount.json` file and `credentials.json` file from ![Firebase](https://firebase.google.com/)
+5. Add the required credentials to `ServiceAccount.json` file and `credentials.json` file from [Firebase](https://firebase.google.com/)
 6. Then on the vs code terminal run `npm run dev`.
     > `npm run dev` will run the server using nodemon locally.
 7. And that's it, your server is ready to use :tada:
