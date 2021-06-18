@@ -15,29 +15,24 @@ const leaderBoardRouter = require("./router/leaderBoard");
 
 const app = express();
 
-var allowedOrigins = [
-  "http://localhost:1234",
-  "https://treasure-hunt-comp.web.app",
-  "https://treasure-hunt-comp.firebaseapp.com",
-  "https://quaruntime.web.app",
-  "http://localhost:8080",
-  "https://treasurehunt-dashboard.web.app",
-];
+// var allowedOrigins = [
+//   // ORIGIN_URLs
+// ];
 
-app.use(
-  cors({
-    origin: function (origin, callback) {
-      if (!origin) return callback(null, true);
-      if (allowedOrigins.indexOf(origin) === -1) {
-        var msg =
-          "The CORS policy for this site does not " +
-          "allow access from the specified Origin.";
-        return callback(new Error(msg), false);
-      }
-      return callback(null, true);
-    },
-  })
-);
+// app.use(
+//   cors({
+//     origin: function (origin, callback) {
+//       if (!origin) return callback(null, true);
+//       if (allowedOrigins.indexOf(origin) === -1) {
+//         var msg =
+//           "The CORS policy for this site does not " +
+//           "allow access from the specified Origin.";
+//         return callback(new Error(msg), false);
+//       }
+//       return callback(null, true);
+//     },
+//   })
+// );
 
 app.use(express.json());
 
