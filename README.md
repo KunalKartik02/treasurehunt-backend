@@ -7,7 +7,8 @@
      > If you are using vs code then, type `code .` and press `Enter`. Which will open up the directory in vs code.
 3. After opening the repo in vs code
    - open the vs code terminal
-   - Then run `npm install`. (which will install required packages).
+   - Then run `npm install`. 
+    > `npm install` will install required packages.
 4. Create a `config.env` file on the root of the directory.
    - Insert mongoDb database credentials in the `config.env` file.
      > you will get the mongoDb credentials from [MongoDb Atlas](https://account.mongodb.com/account/login)
